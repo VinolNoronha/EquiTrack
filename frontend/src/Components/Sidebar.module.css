@@ -1,0 +1,29 @@
+.main {
+  height: 800px;
+  width: 300px;
+  background-color: #1a1919;
+  margin-top: 5px;
+}
+
+.activeLink {
+  height: 50px;
+  width: 90%;
+  background: linear-gradient(to right, #f27405, #f24405);
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  transition: background 0.3s, color 0.3s; /* Include color transition */
+  margin-left: 10px;
+  color: bisque; /* Ensure this color contrasts with the background */
+  font-weight: bold;
+  padding-left: 0px;
+}
+
+.navItem {
+  padding: 25px 15px;
+  transition: all 0.3s ease; /* Smooth transition for hover or active state */
+  color: white;
+}

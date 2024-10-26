@@ -1,0 +1,33 @@
+.main {
+  margin-top: -750px;
+  margin-left: 300px;
+  height: 700px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.newsdiv {
+  background-color: #1a1919;
+  height: 800px;
+  width: 700px;
+  border-radius: 7px;
+  overflow: hidden;
+}
+
+.newscontent {
+  max-height: 100%; /* Maximum height for the content section */
+  overflow-y: auto; /* Enable vertical scrolling within the content */
+  margin-left: 20px;
+}
+
+.news {
+  background-color: #0d0d0d;
+  height: 120px;
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}

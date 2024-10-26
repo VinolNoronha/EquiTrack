@@ -1,0 +1,58 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+.head {
+  height: 70px;
+  width: 100%;
+  background-color: #1a1919;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  font-family: "DM Serif Display", serif;
+  font-weight: 1000;
+  font-style: bold;
+  font-size: 40px;
+  padding-left: 20px;
+  color: #f2f2f2;
+}
+
+.search {
+  display: flex; /* Use flexbox for layout */
+  align-items: center; /* Center items vertically */
+  border: 1px solid #0d0d0d; /* Border around the search bar */
+  border-radius: 5px; /* Rounded corners */
+  overflow: hidden; /* Hide overflow */
+  width: 100%; /* Set width to 100% of the parent container */
+  max-width: 800px; /* Set a maximum width for the search bar */
+  margin: 140px;
+}
+
+.searchip {
+  border: none; /* Remove default border */
+  padding: 6px 15px; /* Add padding for spacing */
+  font-size: 16px; /* Set font size */
+  flex: 1; /* Allow input to take available space */
+  outline: none;
+  background-color: #0d0d0d;
+  color: white;
+}
+
+.searchip::placeholder {
+  color: #5c5b5b; /* Change this to your desired color */
+  opacity: 1; /* Opacity of the placeholder text */
+}
+
+.btn {
+  background-color: #f2f2f2;
+  height: 35px;
+  width: 65px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, #f27405, #f24405);
+  color: white;
+  box-shadow: none;
+  font-weight: 600;
+  font-family: "Segoe UI";
+  margin-right: 30px;
+}
