@@ -82,7 +82,7 @@ function Homepage() {
                       <br></br>
                     </li>
                   ))}
-                  <div>
+                  <div className={styles.seemore}>
                     <Link
                       to="/news"
                       className="font-mono text-zinc-400 text-sm py-20 underline"
@@ -117,7 +117,7 @@ function Homepage() {
                         <div
                           className={`font-mono text-neutral-200 text-1xl px-10 w-16 ${
                             obj.percentage_change > 0
-                              ? "text-green-700"
+                              ? "text-green-600"
                               : "text-red-800"
                           }`}
                         >

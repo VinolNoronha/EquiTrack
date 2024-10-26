@@ -50,7 +50,7 @@ function NewsCom() {
                   >
                     {obj.headline}
                   </Link>
-                  <div className="font-sans text-zinc-400 text-sm py-5">
+                  <div className="font-sans text-zinc-400 text-sm py-5 ">
                     {obj.summary}
                   </div>
                 </li>
