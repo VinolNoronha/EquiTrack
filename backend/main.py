@@ -64,8 +64,44 @@ def get_stock_data(ticker):
     
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+    
+#route to get indo related multiple stocks
+@app.route("/stocks/list") 
+def stocks_lists():
+    KEY = "cs90j1pr01qu0vk4jg60cs90j1pr01qu0vk4jg6g";
+    try:
+        symbols = ['MSFT', 'TSLA', 'GOOGL', 'AMZN', 'NVDA', "AAPL", "META", "NFLX", "CSCO", "BAC", "V", "PFE", "INTC","PYPL", "KO" ]
+        stock_data = []
 
+        for symbol in symbols:
+            stock = yf.Ticker(symbol)
 
+             # Fetch company profile from Finnhub to get the logo
+            profile_resp = requests.get(f'https://finnhub.io/api/v1/stock/profile2?symbol={symbol}&token={KEY}')
+            profile_data = profile_resp.json()
+            logo_url = profile_data.get('logo', 'N/A')  # Logo URL
+
+            #fetching current stocks data
+            info = stock.info
+            market_data = stock.history(period="1d").iloc[-1]
+
+            #append relevent data to the list
+            stock_data.append({
+                'ticker': symbol,
+                'conpany_name': info.get('shortName', 'N/A'),
+                'current_price': market_data['Close'],
+                'change_percentage': ((market_data['Close'] - market_data['Open']) / market_data['Open']) * 100,
+                'market_cap': info.get('marketCap', 'N/A'),    # Market cap
+                'pe_ratio': info.get('trailingPE', 'N/A'),     # P/E ratio
+                'logo_url': logo_url 
+            })
+        
+        return jsonify(stock_data)
+    
+    except Exception as e:
+        print(f"Error fetching the stock data: {e}")
+        return jsonify({"error": "Could not retrieve stock data"}), 500
+        
 
 if __name__ == "__main__":
     app.run(port=5555, host="0.0.0.0", debug=True)
