@@ -1,0 +1,33 @@
+.main {
+  height: 50px;
+  width: 300px;
+  display: flex;
+  background-color: #141414;
+
+  margin-right: 30px;
+  align-items: center;
+  border-radius: 5px;
+  padding-left: 1%;
+  gap: 10px;
+  padding-right: 1%;
+}
+
+.pic {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.btn {
+  background-color: #f2f2f2;
+  height: 35px;
+  width: 250px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, #f27405, #f24405);
+  color: white;
+  box-shadow: none;
+  font-weight: 600;
+  font-family: "Segoe UI";
+  margin-right: 20px;
+}
