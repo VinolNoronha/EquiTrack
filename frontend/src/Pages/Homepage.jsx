@@ -117,7 +117,7 @@ function Homepage() {
                         <div
                           className={`font-mono text-neutral-200 text-1xl px-10 w-16 ${
                             obj.percentage_change > 0
-                              ? "text-green-600"
+                              ? "text-green-500"
                               : "text-red-800"
                           }`}
                         >

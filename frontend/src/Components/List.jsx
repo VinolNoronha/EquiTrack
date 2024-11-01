@@ -1,10 +1,12 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import styles from "./List.module.css";
 import Spinner from "./Spinner";
+import Star from "./Star";
+import { StocksContext } from "../features/stocks/StocksProvider";
+import { useContext } from "react";
 
 function List() {
-  const [stocks, setStocks] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const { stocks, setStocks, loading, setLoading } = useContext(StocksContext);
 
   useEffect(function () {
     async function getStocks() {
@@ -59,7 +61,7 @@ function List() {
                 <div
                   className={`${styles.percentage} ${
                     obj.change_percentage > 0
-                      ? "text-green-700"
+                      ? "text-green-500"
                       : "text-red-700"
                   } font-mono text-neutral-200 text-1xl text-white-500`}
                 >
@@ -74,6 +76,9 @@ function List() {
                   className={`${styles.ratio} font-mono text-neutral-200 text-1xl text-white-500`}
                 >
                   {`${obj.pe_ratio === "N/A" ? "-" : obj.pe_ratio.toFixed(2)}`}
+                </div>
+                <div className={`${styles.star}`}>
+                  <Star key={ind} ticker={obj.ticker} />
                 </div>
               </li>
             </ul>

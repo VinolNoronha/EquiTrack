@@ -1,0 +1,13 @@
+.main {
+  margin-top: -750px;
+  margin-left: 350px;
+  margin-right: 80px;
+  height: 700px;
+}
+
+.info {
+  margin-top: 30px;
+  height: 350px;
+  display: flex;
+  gap: 40px;
+}

@@ -1,17 +1,37 @@
 import { useContext } from "react";
 import { UserContext } from "../features/auth/UserProvider";
 import styles from "./Sucessfulllogin.module.css";
-
 import pfp from "../assets/pfp.jpg";
+import { StocksContext } from "../features/stocks/StocksProvider";
+import { supabase } from "../SupabaseClient";
 
 function Sucessfulllogin() {
   const { email, setEmail, setPassword, setLoggedIn, setId } =
     useContext(UserContext);
+  const { bookmarkedStocks } = useContext(StocksContext);
   function logout() {
+    async function setSupabaseBookmarked() {
+      const { data, error } = await supabase.from("bookmarked").insert([
+        {
+          email,
+          bookmarked_stocks: JSON.stringify(bookmarkedStocks),
+        },
+      ]);
+
+      if (error) {
+        console.error("Error saving bookmarked stocks:", error);
+      } else {
+        console.log("Bookmarked stocks saved:", data);
+      }
+    }
+
+    setSupabaseBookmarked();
+
     setEmail("");
     setPassword("");
     setLoggedIn(false);
     setId("");
+    alert("Logout sucessfull");
   }
   return (
     <>
