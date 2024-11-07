@@ -8,6 +8,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import UserProvider from "./features/auth/UserProvider";
 import StocksProvider from "./features/stocks/StocksProvider";
 import Login from "./features/auth/Login";
+import Detailedana from "./Pages/Detailedana";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
             <Route path="/news" element={<News />} />
             <Route path="/auth" element={<Authentication />} />
             <Route path="login" element={<Login />} />
+            <Route path="/detailedAnalysis" element={<Detailedana />} />
           </Routes>
         </BrowserRouter>
       </UserProvider>

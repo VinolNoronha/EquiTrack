@@ -1,7 +1,8 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 from flask_cors import CORS
 import requests
 import yfinance as yf
+import datetime
 
 #apikey="UenqFSU8YlzKlGyZ1cvZjbV3Aje2Jujv"
 app = Flask(__name__)
@@ -65,7 +66,7 @@ def get_stock_data(ticker):
     except Exception as e:
         return jsonify({"error": str(e)}), 500
     
-#route to get indo related multiple stocks
+#route to get info related multiple stocks
 @app.route("/stocks/list") 
 def stocks_lists():
     KEY = "cs90j1pr01qu0vk4jg60cs90j1pr01qu0vk4jg6g";
@@ -101,7 +102,28 @@ def stocks_lists():
     except Exception as e:
         print(f"Error fetching the stock data: {e}")
         return jsonify({"error": "Could not retrieve stock data"}), 500
-        
+    
+
+#data to plot a graphh related to a particular stock consisting of high and lows per day    
+@app.route("/stocks/data/<ticker>", methods=['GET'])
+def getData(ticker):
+    try:
+        period = request.args.get('period', '1y') #getting data of 1 year
+        interval = request.args.get('interval', '1d') #getting the data on a daily basics
+
+        stock = yf.Ticker(ticker)
+        history = stock.history(period=period, interval=interval)
+
+        data = history.reset_index().to_dict(orient="records")
+        return jsonify(data)
+    except Exception as e:
+        print(f"error in fetching the data {e}")
+        return jsonify({"error":"There was a error in fetchign the data"}), 500
+
+
+
+
+
 
 if __name__ == "__main__":
     app.run(port=5555, host="0.0.0.0", debug=True)

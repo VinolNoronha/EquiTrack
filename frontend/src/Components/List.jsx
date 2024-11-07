@@ -4,9 +4,15 @@ import Spinner from "./Spinner";
 import Star from "./Star";
 import { StocksContext } from "../features/stocks/StocksProvider";
 import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 
 function List() {
   const { stocks, setStocks, loading, setLoading } = useContext(StocksContext);
+  const navigate = useNavigate();
+
+  function gotoAnalysis(obj) {
+    navigate("/detailedAnalysis", { state: { obj } }); //passing tge clicked stock obj to the detailedAna pg
+  }
 
   useEffect(function () {
     async function getStocks() {
@@ -34,7 +40,11 @@ function List() {
       ) : (
         <div>
           {stocks.map((obj, ind) => (
-            <ul className={styles.main} key={ind}>
+            <ul
+              className={styles.main}
+              key={ind}
+              onClick={() => gotoAnalysis(obj)} //this onlick is only invoked when the list is clicked
+            >
               <li className={styles.list}>
                 <div className={styles.image}>
                   <img src={obj.logo_url} alt={`Logo of ${obj.conpany_name}`} />
@@ -61,7 +71,7 @@ function List() {
                 <div
                   className={`${styles.percentage} ${
                     obj.change_percentage > 0
-                      ? "text-green-500"
+                      ? "text-green-400"
                       : "text-red-700"
                   } font-mono text-neutral-200 text-1xl text-white-500`}
                 >

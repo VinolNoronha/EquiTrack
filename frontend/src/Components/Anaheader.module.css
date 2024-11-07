@@ -1,0 +1,19 @@
+.main {
+  height: 200px;
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  margin-left: 30px;
+}
+
+.image {
+  height: 140px;
+  width: 140px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-left: 30px;
+}
+
+.txt {
+  margin-right: 100px;
+}
