@@ -1,5 +1,6 @@
 .main {
-  border: 10px solid black;
+  background-color: #0d0d0d;
   width: 35%;
   height: 90%;
+  border-radius: 5px;
 }

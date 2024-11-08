@@ -4,6 +4,7 @@ import requests
 import yfinance as yf
 import datetime
 
+
 #apikey="UenqFSU8YlzKlGyZ1cvZjbV3Aje2Jujv"
 app = Flask(__name__)
 cors = CORS(app, origins="*")
@@ -119,6 +120,35 @@ def getData(ticker):
     except Exception as e:
         print(f"error in fetching the data {e}")
         return jsonify({"error":"There was a error in fetchign the data"}), 500
+
+#data to do the analysis
+@app.route("/stocks/analysisdata/<ticker>", methods=['GET'])
+def getAnalysisData(ticker):
+    try:
+        # Create the Ticker object with a different variable name
+        stock = yf.Ticker(ticker)
+        
+        # Retrieve the beta value
+        beta = stock.info.get("beta")
+
+        # Retrieve the ESG data and convert to dict if it exists
+        esg_scores = stock.sustainability
+        esg = esg_scores.to_dict(orient="records") if esg_scores is not None else []
+
+        # Structuring the data to be returned
+        data = {
+            "ticker": ticker,  # Now ticker is the symbol, not the object
+            "beta": beta,
+            "esg": esg[1] #USING INDEXING TO ACCESS ONLY THE TOTAL esg score and not other esg scores
+        }
+
+        return jsonify(data)
+
+    except Exception as e:
+        print(f"Error: {e}")
+        return jsonify({"error": "There was an error fetching the data"}), 500
+    
+
 
 
 
