@@ -35,7 +35,10 @@ function Star({ ticker }) {
 
   return (
     <svg
-      onClick={handleClick}
+      onClick={(event) => {
+        event.stopPropagation(); //prevents the propagation of this event from the child component to the parent component
+        handleClick();
+      }}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
       fill={isBookmarked ? "currentColor" : "none"}

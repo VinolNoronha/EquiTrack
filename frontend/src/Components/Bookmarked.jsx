@@ -72,6 +72,8 @@ function Bookmarked() {
     [retrievedData] //this effect only runs when the fetched data from supabase changes(email)
   );
 
+  function handleClick(ticker) {}
+
   console.log(bookmarkedStocks);
 
   return (

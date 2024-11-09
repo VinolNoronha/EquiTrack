@@ -4,7 +4,7 @@ import styles from "./Sidebar.module.css";
 function Sidebar() {
   return (
     <div className={styles.main}>
-      <div className="flex justify-start items-center py-7 pb-17">
+      <div className="flex justify-start items-center py-7 pt-28 pb-17">
         <p className="font-mono text-neutral-200 text-1xl underline pl-4">
           Pages
         </p>

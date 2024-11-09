@@ -21,7 +21,7 @@ function Detailedana() {
       <Header />
       <button
         onClick={goBack}
-        className="inline-flex items-center pb-1 justify-center text-stone-500 h-7 rounded-full w-7 bg-neutral-900 mt-6 ml-6 "
+        className="inline-flex items-center pb-1 justify-center text-stone-500 h-7 rounded-full w-7 bg-neutral-900 mt-20 ml-6 "
       >
         <span className="text-2xl">&larr;</span> {/* Left Arrow symbol */}
       </button>

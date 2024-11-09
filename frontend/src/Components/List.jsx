@@ -41,7 +41,7 @@ function List() {
         <div>
           {stocks.map((obj, ind) => (
             <ul
-              className={styles.main}
+              className={`${styles.main} hover:bg-neutral-950`}
               key={ind}
               onClick={() => gotoAnalysis(obj)} //this onlick is only invoked when the list is clicked
             >
@@ -71,8 +71,8 @@ function List() {
                 <div
                   className={`${styles.percentage} ${
                     obj.change_percentage > 0
-                      ? "text-green-400"
-                      : "text-red-700"
+                      ? "text-green-300"
+                      : "text-red-600"
                   } font-mono text-neutral-200 text-1xl text-white-500`}
                 >
                   {`${obj.change_percentage.toFixed(2)}`}

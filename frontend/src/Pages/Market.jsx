@@ -9,7 +9,7 @@ function Market() {
       <Header />
       <Sidebar />
 
-      <div>
+      <div className="mt-10">
         <Listsparameters />
         <List />
       </div>
